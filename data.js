@@ -1505,7 +1505,21 @@ function isRainingIn24h () {
         return checkRain.icon.includes('rain');
     }
 }
-var output = isRainingIn24h(rawData);
-console.log(output);
+// var output = isRainingIn24h(rawData);
+// console.log(output);
+
+//Get Only the Weather
+//return an array of only the temperatures from hourly data. 
+function getTempretures () {
+    var hourlyData = rawData.hourly.data;
+    return hourlyData.map(function(elem) {
+        return elem['temperature'];
+    });
+}
+// var output = getTempretures(rawData);
+// console.log(output);
+
+//When is it going to rain?
+
 
 
