@@ -1520,14 +1520,12 @@ function getTempretures () {
 // console.log(output);
 
 //When is it going to rain?
-
-
 function whenItRains () {
     var hourlyData = rawData.hourly.data;
-    var onlyRains = hourlyData.filter(function(elem) {
-      return elem.icon === 'rain';
+    var onlyRains = hourlyData.filter(function(curr) {
+      return curr.icon === 'rain';
     });
-   return onlyRains.map(function(curr, idx, arr) {
+   return onlyRains.map(function(curr) {
        var rObj = {};
        rObj['Date'] = new Date(curr.time * 1000).toString();
        return rObj;
@@ -1538,3 +1536,18 @@ function whenItRains () {
 // var output = whenItRains(rawData);
 // console.log(output);
 
+
+//Is it going to be sunny all week?
+function sunInARow () {
+    var dailyData = rawData.daily.data;
+    return dailyData.map(function (curr, idx) {
+        if (curr.summary.includes('sun')) {
+            return 'Sunny!';
+        } else {
+            return 'Not sunny!'
+        }
+    });
+}
+
+var output = sunInARow(rawData);
+console.log(output);
