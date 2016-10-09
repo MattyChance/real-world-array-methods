@@ -1522,4 +1522,19 @@ function getTempretures () {
 //When is it going to rain?
 
 
+function whenItRains () {
+    var hourlyData = rawData.hourly.data;
+    var onlyRains = hourlyData.filter(function(elem) {
+      return elem.icon === 'rain';
+    });
+   return onlyRains.map(function(curr, idx, arr) {
+       var rObj = {};
+       rObj['Date'] = new Date(curr.time * 1000).toString();
+       return rObj;
+   });
+   
+}
+
+// var output = whenItRains(rawData);
+// console.log(output);
 
