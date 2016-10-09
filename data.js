@@ -1562,5 +1562,20 @@ function getHottest() {
     return 'The highest temperature for today is ' + Math.max.apply(null, hourlyTemp);
     
 }
-var output = getHottest(rawData);
+// var output = getHottest(rawData);
+// console.log(output);
+
+//Stats on this week's weather
+function countIcons() {
+    var dailyData = rawData.daily.data;
+    return dailyData.reduce(function (prev, curr, idx, arr) {
+        if (!prev[curr.icon]) {
+            prev[curr.icon] = 1;
+        } else {
+            prev[curr.icon] += 1;
+        }
+        return prev;
+    }, {});
+}
+var output = countIcons(rawData);
 console.log(output);
