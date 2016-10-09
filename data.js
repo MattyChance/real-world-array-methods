@@ -1522,10 +1522,11 @@ function getTempretures () {
 //When is it going to rain?
 function whenItRains () {
     var hourlyData = rawData.hourly.data;
-    var onlyRains = hourlyData.filter(function(curr) {
+    // var onlyRains = 
+    return hourlyData.filter(function(curr) {
       return curr.icon === 'rain';
-    });
-   return onlyRains.map(function(curr) {
+    })
+   .map(function(curr) {
        var rObj = {};
        rObj['Date'] = new Date(curr.time * 1000).toString();
        return rObj;
@@ -1533,8 +1534,8 @@ function whenItRains () {
    
 }
 
-// var output = whenItRains(rawData);
-// console.log(output);
+var output = whenItRains(rawData);
+console.log(output);
 
 
 //Is it going to be sunny all week?
@@ -1577,5 +1578,5 @@ function countIcons() {
         return prev;
     }, {});
 }
-var output = countIcons(rawData);
-console.log(output);
+// var output = countIcons(rawData);
+// console.log(output);
