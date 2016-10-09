@@ -1549,5 +1549,18 @@ function sunInARow () {
     });
 }
 
-var output = sunInARow(rawData);
+// var output = sunInARow(rawData);
+// console.log(output);
+
+//How hot will it be Today?
+function getHottest() {
+    var hourlyData = rawData.hourly.data;
+    var hourlyTemp = hourlyData.map(function(curr) {
+        return curr.apparentTemperature;
+    });
+   
+    return 'The highest temperature for today is ' + Math.max.apply(null, hourlyTemp);
+    
+}
+var output = getHottest(rawData);
 console.log(output);
